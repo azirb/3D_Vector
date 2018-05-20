@@ -14,7 +14,8 @@ int main()
 	if (x == 1)
 	{
 		//using functions 
-		double _x, _y, _z;
+		double _x, _y, _z; 
+			int _dir;
 
 		TreeD_Vector a, b;
 
@@ -27,8 +28,12 @@ int main()
 		cout << "Введите координату z  ";
 		cin >> _z;
 
+		cout << "Задайте направление 1(Вправо(вверх)) или 0(Влево(вниз))";
+		cin >> _dir;
+
 		a.set_xyz(_x, _y, _z);
 		a.set_Lenght();
+		a.set_direc(_dir); 
 
 		_x += 2;
 		_y += 2;
@@ -36,6 +41,7 @@ int main()
 
 		b.set_xyz(_x, _y, _z);
 		b.set_Lenght();
+		b.set_direc(_dir); 
 
 		a.printAll();
 
@@ -49,9 +55,8 @@ int main()
 		{
 			cout << "Длинна не равна " << endl;
 		} 
-
-
-		a.add(b);
+		
+		a.add(b); 
 		a.set_Lenght();
 		a.printAll();
 
@@ -75,7 +80,8 @@ int main()
 	}
 	else
 	{
-		double x, y, z;
+		double x, y, z; 
+		int dir;
 
 		cout << "Введите координату x ";
 		cin >> x;
@@ -86,6 +92,10 @@ int main()
 		cout << "Введите координату z ";
 		cin >> z;
 
+
+		cout << "Задайте направление 1(Вправо(вверх)) или 0(Влево(вниз))";
+		cin >> dir;
+
 		TreeD_Vector g(x, y, z);
 
 		x += 2;
@@ -94,6 +104,8 @@ int main()
 
 		TreeD_Vector k(x, y, z);
 
+		g.set_direc(dir);
+		k.set_direc(dir);
 		g.set_Lenght();
 		k.set_Lenght();
 		g.printAll();
@@ -101,7 +113,7 @@ int main()
 
 		if (g == k)
 		{
-			cout << "Длинна равна " << endl;
+			cout << "Вектора равны " << endl;
 		}
 		else
 		{

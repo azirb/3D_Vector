@@ -31,6 +31,23 @@ void TreeD_Vector::set_Lenght()
 	lenght=sqrt(pow(x, 2) + pow(y, 2) + pow(z, 2));
 }
 
+void TreeD_Vector::set_direc(int _dir)
+{
+	error404:
+	if (_dir == 0 || _dir == 1)
+	{
+		direc = _dir; 
+	}
+	else
+	{
+		cout << "Error 404 Направление может быть 1 или 0 " << endl; 
+		cout << "Retry pls"; 
+		cout << "Введите напрвление снова"; 
+		cin >> _dir; 
+		goto error404; 
+	}
+}
+
 double TreeD_Vector :: get_x()
 {
 	return x; 
@@ -49,6 +66,11 @@ double TreeD_Vector::get_z()
 double  TreeD_Vector :: get_Lenght()
 {
 	return lenght; 
+}
+
+int TreeD_Vector:: get_Int_direc()
+{
+	return direc; 
 }
 
 // metods 
@@ -85,8 +107,12 @@ bool TreeD_Vector :: equal_Lenght(TreeD_Vector _c)
 
 bool TreeD_Vector::equal_vectors(TreeD_Vector _c)
 {
-	// how to take the direction ?
-	return 0; 
+	if (equal_Lenght(_c) && direc == _c.direc)
+	{
+		return true;
+	}
+	else
+		return false; 
 }
 
 // constructors 
@@ -145,7 +171,12 @@ TreeD_Vector TreeD_Vector  :: operator *  (const double &c)
 
 bool  TreeD_Vector  ::  operator == (const TreeD_Vector &c)
 {
-	return lenght == c.lenght; 
+    if (equal_Lenght(c) && direc == c.direc)
+	{
+		return true;
+	}
+	else
+		return false; 
 }
 bool  TreeD_Vector  ::  operator != (const TreeD_Vector &c)
 {
@@ -163,6 +194,7 @@ bool  TreeD_Vector  ::  operator <  (const TreeD_Vector &c)
 // print all info about obj 
 void TreeD_Vector::printAll()
 {
+	cout << "Направление " << direc << endl; 
 	cout << "Координата х = " << x << endl; 
 	cout << "Координата y = " << y << endl;
 	cout << "Координата z = " << z << endl;
